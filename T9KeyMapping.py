@@ -1,3 +1,20 @@
+"""
+This program implements a simple T9-style keypad word matcher.
+
+Given a numeric keypad sequence (e.g., "786"), the program checks each word
+in a predefined dictionary and determines which words could be typed using
+that sequence on a traditional mobile phone keypad.
+
+Each digit maps to a set of possible letters (e.g., 7 → p, q, r, s).  
+A word is considered a match only if:
+- It has the same length as the keypad sequence.
+- Every letter in the word corresponds to one of the allowed letters
+  for the digit in the same position.
+
+The mappingfun function returns a list of all dictionary words that match
+the provided keypad sequence.
+"""
+
 dictionary = {"put", "out", "sun", "run", "smart", "truck"}
 finalWords = []
 mappings = {
@@ -11,7 +28,7 @@ mappings = {
     "9": ["w", "x", "y", "z"]
 }
 
-def mappingfun(keypadMapping):
+def mappingfun(keypadMapping : str -> str):
     # Loop through every word in the dictionary
     for x in dictionary:
         # Assume the word matches until proven otherwise
